@@ -19,6 +19,15 @@ plugins {
     id 'java-library'
 }
 
+
+
+
+repositories {
+    mavenLocal()
+}
+
+
+
 description 'Provides a task similar to Tar and Zip for constructing RPM and DEB package files.'
 
 compileGroovy.groovyOptions.configurationScript = file('src/groovyCompile/groovycConfig.groovy')
@@ -42,7 +51,7 @@ configurations.all {
 
 dependencies {
     implementation 'org.apache.commons:commons-lang3:3.9'
-    api('org.redline-rpm:redline:1.2.10') {
+    api('org.redline-rpm:redline:1.2.11-SNAPSHOT') {
         // Where logging goes is a runtime decision
         exclude group: 'org.slf4j', module: 'slf4j-log4j12'
     }
