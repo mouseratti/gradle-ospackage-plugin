@@ -19,10 +19,19 @@ plugins {
     id 'java-library'
 }
 
-
-
-
 repositories {
+    maven {
+        url "https://gitlab.promobit.ru/KFS/cicd/-/packages/maven"
+        name "GitLab"
+        credentials(HttpHeaderCredentials) {
+            name = 'Private-Token'
+            value = System.getenv("CI_TOKEN")
+        }
+        authentication {
+            header(HttpHeaderAuthentication)
+        }
+    }
+
     mavenLocal()
 }
 
